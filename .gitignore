@@ -26,6 +26,7 @@ APK/
 *.apk
 *.APK
 runtests
+*.csproj.bak
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
