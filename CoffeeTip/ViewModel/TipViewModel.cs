@@ -89,7 +89,7 @@ namespace CoffeeTip.ViewModel
         {
             if (AtStarbucks)
             {
-                TipAmount = 0;
+                TipAmount = .25M;
             }
             else
             {

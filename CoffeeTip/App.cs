@@ -12,8 +12,8 @@ namespace CoffeeTip
             // The root page of your application
             MainPage = new NavigationPage(new TipPage())
                 {
-                    BarBackgroundColor = Color.FromHex("#03A9F4"),
-                    BarTextColor = Color.White
+                    BarBackgroundColor = Color.FromHex("#000000"),
+                    BarTextColor = Color.Pink
                 };
         }
 
