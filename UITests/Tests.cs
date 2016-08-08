@@ -6,7 +6,7 @@ using Xamarin.UITest.Queries;
 namespace CoffeeTip.UITests
 {
     [TestFixture(Platform.Android)]
-    [TestFixture(Platform.iOS)]
+    //[TestFixture(Platform.iOS)]
     public class Tests
     {
         IApp app;
@@ -23,27 +23,31 @@ namespace CoffeeTip.UITests
             app = AppInitializer.StartApp(platform);
         }
 
+
+
         [Test]
-        public void Test()
+        public void DripCoffeeTest()
         {
-            app.Tap("DrinkType");
-            app.Tap("Espresso");
-            app.DismissKeyboard();
 
+            app.Screenshot("When I run the app");
 
-           
-
-            app.Tap("Tamered");
             app.ClearText("SubTotal");
-            app.EnterText("SubTotal", "3.50");
-            app.DismissKeyboard();
+            app.Screenshot("When I clear text");
+
+            app.EnterText("SubTotal", "4.00");
+            app.Screenshot("And Enter $4.00");
 
             var total = app.Query("Total").First();
-            var tamered = app.Query("Tamered").First();
+            var tip = app.Query("TipAmount").First();
 
-            Assert.IsTrue(tamered.Enabled);
-            Assert.AreEqual("Total: $4.00", total.Text);
+            Assert.AreEqual(total.Text, "Total: $4.50");
+            Assert.AreEqual(tip.Text, "Tip: $0.50");
+
+
+            app.Screenshot("Total is $4.50 with $0.50 tip");
+
         }
+
 
         [Test]
         public void AtStarbucks()
@@ -52,11 +56,18 @@ namespace CoffeeTip.UITests
             app.Screenshot("When I run the app");
 
             screen.EnterSubTotal(5.00M);
+            app.Screenshot("And I enter $5.00");
+
             screen.ToggleStarbucks();
+            app.Screenshot("Then Toggle Starbucks");
 
             Assert.AreEqual("Total: $5.00", screen.TotalText);
             Assert.AreEqual("Tip: $0.00", screen.TipText);
+
+            app.Screenshot("Total is $5.00 with $0.00 tip");
         }
+
+
     }
 
     public enum CoffeeDrink
