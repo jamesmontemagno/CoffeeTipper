@@ -23,34 +23,28 @@ namespace CoffeeTip.UITests
             app = AppInitializer.StartApp(platform);
         }
 
-        [Test]
-        public void MyFirstTest()
-        {
-            app.ClearText("SubTotal");
-            app.EnterText("SubTotal", "3.50");
-            app.Tap("DrinkType");
-            app.Tap("Latte");
-            app.Query("Total");
-            app.Tap("Tamered");
-            var total = app.Query("Total").First();
-
-            Assert.AreEqual(total.Text, "Total: $4.50");
-        }
-        
-
-
 
 
         [Test]
         public void DripCoffeeTest()
         {
+
+            app.Screenshot("When I run the app");
+
             app.ClearText("SubTotal");
+            app.Screenshot("When I clear text");
+
             app.EnterText("SubTotal", "4.00");
+            app.Screenshot("And Enter $4.00");
+
             var total = app.Query("Total").First();
             var tip = app.Query("TipAmount").First();
 
             Assert.AreEqual(total.Text, "Total: $4.50");
             Assert.AreEqual(tip.Text, "Tip: $0.50");
+
+
+            app.Screenshot("Total is $4.50 with $0.50 tip");
 
         }
 
@@ -62,79 +56,15 @@ namespace CoffeeTip.UITests
             app.Screenshot("When I run the app");
 
             screen.EnterSubTotal(5.00M);
+            app.Screenshot("And I enter $5.00");
+
             screen.ToggleStarbucks();
+            app.Screenshot("Then Toggle Starbucks");
 
             Assert.AreEqual("Total: $5.00", screen.TotalText);
             Assert.AreEqual("Tip: $0.00", screen.TipText);
-        }
 
-        [Test]
-        public void NewTest()
-        {
-            
-            app.Tap(x => x.Marked("SubTotal"));
-            app.ClearText(x => x.Marked("SubTotal"));
-            app.EnterText(x => x.Marked("SubTotal"), "3.00");
-            app.Tap(x => x.Marked("DrinkType"));
-            app.Tap(x => x.Text("Espresso"));
-            app.Tap(x => x.Marked("Starbucks"));
-            app.Screenshot("Tapped on view with class: SwitchCompat marked: Starbucks");
-
-        }
-
-        [Test]
-        public void NewTest1()
-        {
-            app.Tap(x => x.Marked("SubTotal"));
-            app.ClearText(x => x.Marked("SubTotal"));
-            app.EnterText(x => x.Marked("SubTotal"), "4.00");
-            app.Tap(x => x.Marked("DrinkType"));
-            app.Tap(x => x.Text("Espresso"));
-            app.ClearText(x => x.Marked("DrinkType"));
-            app.EnterText(x => x.Marked("DrinkType"), "Drip Coffee");
-            app.Tap(x => x.Marked("Tamered"));
-            app.Tap(x => x.Marked("Starbucks"));
-            app.Tap(x => x.Marked("Reset"));
-            app.Screenshot("Cleared Text");
-            app.WaitForElement(x => x.Marked("Reset"));
-
-
-            var total = app.Query("Total").First();
-            var tip = app.Query("TipAmount").First();
-
-            Assert.AreEqual(total.Text, "Total: $3.00");
-            Assert.AreEqual(tip.Text, "Tip: $0.50");
-        }
-
-        [Test]
-        public void NewTest2()
-        {
-            app.Tap(x => x.Marked("SubTotal"));
-            app.ClearText(x => x.Marked("SubTotal"));
-            app.EnterText(x => x.Marked("SubTotal"), "3.00");
-            app.Tap(x => x.Marked("DrinkType"));
-            app.Tap(x => x.Text("Pour Over Coffee"));
-            app.EnterText(x => x.Marked("DrinkType"), "o");
-            app.Tap(x => x.Marked("Tamered"));
-        }
-
-        [Test]
-        public void NewTest3()
-        {
-            app.Screenshot("Screenshot");
-            app.Tap(x => x.Marked("SubTotal"));
-            app.ClearText(x => x.Marked("SubTotal"));
-            app.EnterText(x => x.Marked("SubTotal"), "3.00");
-            app.Tap(x => x.Marked("DrinkType"));
-            app.Tap(x => x.Text("Espresso"));
-            app.ClearText(x => x.Marked("DrinkType"));
-            app.EnterText(x => x.Marked("DrinkType"), "Drip Coffee");
-            app.Tap(x => x.Marked("Tamered"));
-            app.Tap(x => x.Marked("Starbucks"));
-            app.Tap(x => x.Marked("Reset"));
-            app.ClearText(x => x.Marked("SubTotal"));
-            app.EnterText(x => x.Marked("SubTotal"), "3.0");
-            app.EnterText(x => x.Marked("DrinkType"), "f");
+            app.Screenshot("Total is $5.00 with $0.00 tip");
         }
 
 
