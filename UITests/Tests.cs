@@ -6,7 +6,7 @@ using Xamarin.UITest.Queries;
 namespace CoffeeTip.UITests
 {
     [TestFixture(Platform.Android)]
-    //[TestFixture(Platform.iOS)]
+    [TestFixture(Platform.iOS)]
     public class Tests
     {
         IApp app;
