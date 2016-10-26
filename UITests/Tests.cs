@@ -22,7 +22,11 @@ namespace CoffeeTip.UITests
         {
             app = AppInitializer.StartApp(platform);
         }
-
+        [Test]
+        public void DevIntersectionTest()
+        {
+            app.Screenshot("App Launched")
+        }
 
 
         [Test]
