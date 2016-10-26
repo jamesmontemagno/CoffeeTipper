@@ -16,6 +16,7 @@
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>CoffeeTip.Droid</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidSdkBuildToolsVersion>23.0.3</AndroidSdkBuildToolsVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
