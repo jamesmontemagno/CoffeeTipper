@@ -25,7 +25,7 @@ namespace CoffeeTip.UITests
         [Test]
         public void DevIntersectionTest()
         {
-            app.Screenshot("App Launched")
+            app.Screenshot("App Launched");
         }
 
 
