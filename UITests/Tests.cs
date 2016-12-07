@@ -6,7 +6,7 @@ using Xamarin.UITest.Queries;
 namespace CoffeeTip.UITests
 {
     [TestFixture(Platform.Android)]
-    //[TestFixture(Platform.iOS)]
+    [TestFixture(Platform.iOS)]
     public class Tests
     {
         IApp app;
@@ -22,7 +22,11 @@ namespace CoffeeTip.UITests
         {
             app = AppInitializer.StartApp(platform);
         }
-
+        [Test]
+        public void DevIntersectionTest()
+        {
+            app.Screenshot("App Launched");
+        }
 
 		[Test]
 		public void TamperedDisabled_PourOver()
