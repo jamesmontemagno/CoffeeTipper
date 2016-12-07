@@ -12,7 +12,9 @@ namespace CoffeeTip.UITests
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp.Android.StartApp();
+                return ConfigureApp.Android
+					               .ApkFile(@"..\..\..\Droid\bin\Debug\com.xamarin.coffee_tip.apk")
+					               .StartApp();
             }
 
             return ConfigureApp.iOS.StartApp();
