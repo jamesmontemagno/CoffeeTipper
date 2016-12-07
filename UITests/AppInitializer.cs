@@ -12,8 +12,13 @@ namespace CoffeeTip.UITests
         {
             if (platform == Platform.Android)
             {
-                return ConfigureApp.Android
-					               .ApkFile(@"..\..\..\Droid\bin\Debug\com.xamarin.coffee_tip.apk")
+
+				var mac = @"../../../Droid/bin/Debug/com.xamarin.coffee_tip.apk";
+
+				var pc = @"..\..\..\Droid\bin\Debug\com.xamarin.coffee_tip.apk";
+                
+				return ConfigureApp.Android
+					               .ApkFile(mac)
 					               .StartApp();
             }
 

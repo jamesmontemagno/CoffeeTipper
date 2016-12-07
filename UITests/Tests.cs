@@ -26,7 +26,7 @@ namespace CoffeeTip.UITests
 		[Test]
 		public void TamperedDisabled_PourOver()
 		{
-			app.Tap(x => x.Id("DrinkType"));
+			app.Tap(x => x.Marked("DrinkType"));
 			app.Screenshot("Tapped Drink Type");
 
 			app.Tap(x => x.Marked("Pour Over Coffee"));
