@@ -28,8 +28,26 @@ namespace CoffeeTip.UITests
             app.Screenshot("App Launched");
         }
 
+		[Test]
+		public void TamperedDisabled_PourOver()
+		{
+			app.Tap(x => x.Id("DrinkType"));
+			app.Screenshot("Tapped Drink Type");
 
-        [Test]
+			app.Tap(x => x.Marked("Pour Over Coffee"));
+			app.Screenshot("Tapped on Pour Over Coffee");
+
+			app.DismissKeyboard();
+
+			app.Screenshot("Dismissed Keyboard");
+			var result = app.Query(x => x.Id("Tamered")).First();
+			Assert.IsFalse(result.Enabled, "Tampered is enabled, when it shouldn't be");
+
+		}
+
+
+
+		[Test]
         public void DripCoffeeTest()
         {
 
